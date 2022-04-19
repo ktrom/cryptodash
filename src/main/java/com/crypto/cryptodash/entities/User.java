@@ -1,5 +1,6 @@
 package com.crypto.cryptodash.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,35 +8,47 @@ import javax.persistence.Id;
 
 @Entity // This tells Hibernate to make a table out of this class
 public class User {
-  @Id
-  @GeneratedValue(strategy=GenerationType.AUTO)
-  private Integer id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
 
-  private String name;
+	@Column(unique = true)
+	private String username;
 
-  private String email;
+	private String hashedPassword;
 
-  public Integer getId() {
-    return id;
-  }
+	private String salt;
 
-  public void setId(Integer id) {
-    this.id = id;
-  }
+	public Integer getId() {
+		return id;
+	}
 
-  public String getName() {
-    return name;
-  }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-  public void setName(String name) {
-    this.name = name;
-  }
+	public String getUsername() {
+		return username;
+	}
 
-  public String getEmail() {
-    return email;
-  }
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-  public void setEmail(String email) {
-    this.email = email;
-  }
+	public String getHashedPassword() {
+		return hashedPassword;
+	}
+
+	public void setHashedPassword(String hashedPassword) {
+		this.hashedPassword = hashedPassword;
+	}
+
+	public String getSalt() {
+		return salt;
+	}
+
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
+
 }
